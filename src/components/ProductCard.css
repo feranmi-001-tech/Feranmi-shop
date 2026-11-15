@@ -1,0 +1,187 @@
+.product {
+  display: flex;
+  flex-direction: column;
+}
+
+.product__tile {
+  position: relative;
+  aspect-ratio: 1 / 1.06;
+  background: var(--tile);
+  overflow: hidden;
+}
+
+.product__tile img {
+  width: 100%;
+  height: 100%;
+  padding: 10%;
+  object-fit: contain;
+  transition: transform 0.6s var(--ease);
+}
+
+.product:hover .product__tile img {
+  transform: scale(1.045);
+}
+
+.product__tag {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.28rem 0.55rem;
+  background: #fff;
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.product__save {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.2s ease;
+}
+
+.product:hover .product__save,
+.product__save:focus-visible,
+.product__save.is-saved {
+  opacity: 1;
+  transform: none;
+}
+
+.product__save.is-saved {
+  color: #b4432f;
+}
+
+.product__quick {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.55rem;
+  background: rgba(255, 255, 255, 0.97);
+  transform: translateY(101%);
+  transition: transform 0.3s var(--ease);
+}
+
+.product:hover .product__quick,
+.product:focus-within .product__quick {
+  transform: translateY(0);
+}
+
+.product__sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.product__size {
+  min-width: 26px;
+  padding: 0.24rem 0.3rem;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.product__size.is-active {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+
+.product__add {
+  padding: 0.55rem;
+  border: none;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: background 0.2s ease;
+}
+
+.product__add:hover {
+  background: var(--accent);
+}
+
+.product__info {
+  padding-top: 0.85rem;
+}
+
+.product__category {
+  margin: 0 0 0.2rem;
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.product__line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.product__name {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+.product__price {
+  font-size: 0.78rem;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.product__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.3rem 0 0;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  color: #c9a227;
+}
+
+.product__reviews {
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+}
+
+/* Touch devices cannot hover, so keep the quick-add row visible. */
+@media (hover: none) {
+  .product__quick {
+    position: static;
+    transform: none;
+    padding: 0.5rem 0 0;
+    background: transparent;
+  }
+
+  .product__save {
+    opacity: 1;
+    transform: none;
+  }
+}

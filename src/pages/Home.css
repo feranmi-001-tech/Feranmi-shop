@@ -1,0 +1,459 @@
+/* Hero ------------------------------------------------------------ */
+
+.hero {
+  position: relative;
+  height: clamp(440px, 50vw, 720px);
+  overflow: hidden;
+  background: #0e1b24;
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s var(--ease);
+}
+
+.hero__slide.is-active {
+  opacity: 1;
+}
+
+.hero__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(9, 20, 28, 0.62) 0%,
+    rgba(9, 20, 28, 0.32) 38%,
+    rgba(9, 20, 28, 0) 70%
+  );
+}
+
+.hero__content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.hero__copy {
+  max-width: 30rem;
+  color: #fff;
+  animation: hero-in 0.6s var(--ease) both;
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero__eyebrow {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hero__copy h1 {
+  color: #fff;
+  font-size: clamp(1.9rem, 4.1vw, 3.15rem);
+  font-weight: 600;
+  line-height: 1.08;
+  margin-bottom: 0.9rem;
+}
+
+.hero__copy p {
+  max-width: 34ch;
+  margin-bottom: 1.6rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.hero__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--ink);
+  font-size: 1.35rem;
+  line-height: 1;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.hero__arrow:hover {
+  background: var(--ink);
+  color: #fff;
+}
+
+.hero__arrow--prev {
+  left: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.hero__arrow--next {
+  right: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.hero__arrow span {
+  transform: translateY(-2px);
+}
+
+.hero__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 1.1rem;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.4rem;
+}
+
+.hero__dot {
+  width: 26px;
+  height: 2px;
+  padding: 0;
+  border: none;
+  background: rgba(255, 255, 255, 0.42);
+  transition: background 0.2s ease;
+}
+
+.hero__dot.is-active {
+  background: #fff;
+}
+
+/* Welcome --------------------------------------------------------- */
+
+.welcome {
+  padding-block: clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.welcome__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.welcome__inner h2 {
+  margin: 0;
+  max-width: 24ch;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 500;
+}
+
+.welcome__inner p {
+  font-size: 0.9rem;
+  max-width: 52ch;
+}
+
+.welcome__inner .text-link {
+  margin-top: 0.5rem;
+}
+
+/* New arrivals ---------------------------------------------------- */
+
+.new-in {
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.6rem;
+  margin: 1.4rem 0 clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.tabs__tab {
+  position: relative;
+  padding: 0 0 0.4rem;
+  border: none;
+  background: transparent;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  transition: color 0.2s ease;
+}
+
+.tabs__tab:hover {
+  color: var(--ink);
+}
+
+.tabs__tab.is-active {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.tabs__tab.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--ink);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2.2vw, 1.6rem) clamp(0.85rem, 1.8vw, 1.4rem);
+}
+
+.new-in__more {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+/* Campaign banners ------------------------------------------------ */
+
+.promos {
+  padding-block: clamp(1rem, 3vw, 2rem) clamp(2.5rem, 5vw, 4rem);
+}
+
+.promos__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+
+.promos__side {
+  display: grid;
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+
+.promos__pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+
+.promo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--tile);
+}
+
+.promo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+
+/* Soft scrim so the overlay copy stays readable on any photo. */
+.promo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    150deg,
+    rgba(9, 20, 28, 0.55) 0%,
+    rgba(9, 20, 28, 0.15) 38%,
+    rgba(9, 20, 28, 0) 62%
+  );
+  pointer-events: none;
+}
+
+.promo--blue::after {
+  display: none;
+}
+
+.promo:hover img {
+  transform: scale(1.04);
+}
+
+.promo--tall {
+  min-height: clamp(420px, 46vw, 620px);
+}
+
+.promo--wide {
+  min-height: clamp(220px, 24vw, 320px);
+}
+
+.promos__pair .promo {
+  min-height: clamp(220px, 24vw, 300px);
+}
+
+.promo__copy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: clamp(1.1rem, 2.4vw, 1.9rem);
+  max-width: 22rem;
+  color: #fff;
+}
+
+.promo__eyebrow {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.promo__copy h3 {
+  margin: 0 0 1rem;
+  max-width: 15ch;
+  color: #fff;
+  font-size: clamp(1.1rem, 2.1vw, 1.6rem);
+  font-weight: 500;
+  line-height: 1.18;
+}
+
+.promo__copy .btn {
+  padding: 0.7rem 1.35rem;
+  font-size: 0.6rem;
+}
+
+.promo--blue {
+  display: flex;
+  align-items: flex-end;
+  background: var(--accent);
+}
+
+.promo__copy--blue {
+  position: static;
+  max-width: none;
+  padding: clamp(1.1rem, 2.4vw, 1.9rem);
+}
+
+.promo__copy--blue h3 {
+  max-width: 14ch;
+  margin-bottom: 0.35rem;
+}
+
+.promo__number {
+  display: block;
+  margin: 0.2rem 0 1rem;
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+}
+
+/* Service strip --------------------------------------------------- */
+
+.promises {
+  padding-block: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--line);
+}
+
+.promises__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.promise h3 {
+  margin-bottom: 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.promise p {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+/* Responsive ------------------------------------------------------ */
+
+@media (max-width: 1080px) {
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .welcome__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .promos__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .promo--tall {
+    min-height: 440px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    height: clamp(400px, 88vw, 500px);
+  }
+
+  .hero__copy p {
+    display: none;
+  }
+
+  .hero__arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tabs {
+    gap: 1rem;
+  }
+
+  .promises__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .promos__pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .product-grid {
+    gap: 1rem 0.75rem;
+  }
+
+  .hero__copy h1 {
+    font-size: 1.65rem;
+  }
+}
